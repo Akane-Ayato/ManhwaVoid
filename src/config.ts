@@ -9,12 +9,11 @@ export const SITE = {
   tagline: 'Read your favorite Manga, Manhwa, Manhua and Webtoons online.',
 };
 
-/** Full API prefix. Relative ("/api/v1") works with the Vite dev proxy and same-origin deploys. */
-const RAW_BASE = (import.meta.env.VITE_API_BASE_URL || '/api/v1').replace(/\/+$/, '');
-/** Production always uses the same-origin proxy (api/[...path].ts) so the real API address is never shipped to browsers. */
-export const API_BASE = import.meta.env.PROD && /^https?:\/\//i.test(RAW_BASE) && import.meta.env.VITE_ALLOW_DIRECT_API !== '1' ? '/api/v1' : RAW_BASE;
+/** API endpoint. Production calls the VPS directly; local development keeps the Vite proxy. */
+const RAW_BASE = (import.meta.env.VITE_API_BASE_URL || '/api/v1').trim().replace(/\/+$/, '');
+export const API_BASE = RAW_BASE;
 
-/** Origin that serves API-relative assets such as /api/v1/static/avatars/x.jpg */
+/** Origin used for API-relative assets (avatars and other uploads). */
 export const API_ORIGIN = /^https?:\/\//i.test(API_BASE) ? new URL(API_BASE).origin : '';
 
 export const MANGA_TYPES = ['Manga', 'Manhwa', 'Manhua', 'Webtoon'] as const;
