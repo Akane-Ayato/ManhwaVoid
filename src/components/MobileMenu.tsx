@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
-import { Bookmark, Download, History, LayoutGrid, LogOut, Moon, Plus, Minus, Settings, Shuffle, Sun, X, Home, Layers } from 'lucide-react';
+import { Bookmark, Download, History, LogOut, Moon, Plus, Minus, Settings, Shuffle, Sun, X, Home, Layers } from 'lucide-react';
 import Avatar from './Avatar';
 import SearchBox from './SearchBox';
 import { MANGA_TYPES } from '../config';
@@ -52,7 +52,7 @@ export default function MobileMenu({ open, onClose, genres, onRandom }: Props) {
 
         <div className="mm-scroll">
           {user ? (
-            <Link to="/profile?tab=summary" className="mm-user" onClick={onClose}>
+            <Link to="/profile?tab=settings" className="mm-user" onClick={onClose}>
               <Avatar user={user} size={46} />
               <span><b>{user.display_name}</b><small>View Profile &amp; Settings →</small></span>
             </Link>
@@ -97,7 +97,7 @@ export default function MobileMenu({ open, onClose, genres, onRandom }: Props) {
 
           {user && (
             <nav className="mm-links mm-account">
-              <Link to="/profile?tab=summary" onClick={onClose}><LayoutGrid size={18} /> Account Summary</Link>
+              <Link to="/profile?tab=settings" onClick={onClose}><Settings size={18} /> Profile Settings</Link>
               <Link to="/profile?tab=bookmark" onClick={onClose}><Bookmark size={18} /> Bookmarks</Link>
               <Link to="/profile?tab=history" onClick={onClose}><History size={18} /> Reading History</Link>
               <Link to="/profile?tab=settings" onClick={onClose}><Settings size={18} /> Settings</Link>
