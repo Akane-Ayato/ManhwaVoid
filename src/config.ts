@@ -1,6 +1,6 @@
 /**
  * Central place for everything that is deployment- or brand-specific.
- * Change these via .env (see .env.example) instead of editing components.
+ * API_BASE_URL is supplied through Vercel's build environment.
  */
 export const SITE = {
   name: import.meta.env.VITE_SITE_NAME || 'Manhwa Void',
@@ -9,11 +9,15 @@ export const SITE = {
   tagline: 'Read your favorite Manga, Manhwa, Manhua and Webtoons online.',
 };
 
-/** API endpoint. Production calls the VPS directly; local development keeps the Vite proxy. */
-const RAW_BASE = (import.meta.env.VITE_API_BASE_URL || '/api/v1').trim().replace(/\/+$/, '');
+/**
+ * Production: direct browser-to-VPS API URL, e.g.
+ * https://api.manhwavoid.space/api/v1
+ * Local development: fall back to the Vite /api proxy.
+ */
+const RAW_BASE = (import.meta.env.API_BASE_URL || '/api/v1').trim().replace(/\/+$/, '');
 export const API_BASE = RAW_BASE;
 
-/** Origin used for API-relative assets (avatars and other uploads). */
+/** Origin used for API-relative assets such as avatars and other uploads. */
 export const API_ORIGIN = /^https?:\/\//i.test(API_BASE) ? new URL(API_BASE).origin : '';
 
 export const MANGA_TYPES = ['Manga', 'Manhwa', 'Manhua', 'Webtoon'] as const;
