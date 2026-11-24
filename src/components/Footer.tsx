@@ -30,7 +30,7 @@ export default function Footer() {
           <h4>My Account</h4>
           <Link to="/profile?tab=bookmark">Bookmarks</Link>
           <Link to="/profile?tab=history">Reading History</Link>
-          <Link to="/profile?tab=summary">My Profile</Link>
+          <Link to="/profile?tab=settings">Profile</Link>
           <Link to="/profile?tab=settings">Settings</Link>
           {install.available && <button className="footer-link" onClick={install.install}>Install app</button>}
         </nav>
