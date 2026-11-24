@@ -1,0 +1,23 @@
+{
+  "patch_type": "changed_files_only",
+  "base_archive": "ManhwaHQ-Frontend(2).zip",
+  "updated_files": [
+    "src/pages/profile/Profile.tsx",
+    "src/pages/profile/HistoryTab.tsx",
+    "src/pages/Home.tsx",
+    "src/pages/Reader.tsx",
+    "src/components/Header.tsx",
+    "src/lib/api.ts",
+    "src/lib/format.ts",
+    "src/types/api.ts",
+    "src/styles/cards.css",
+    "src/styles/profile.css"
+  ],
+  "deleted_files": [
+    "src/pages/profile/SummaryTab.tsx",
+    "src/pages/profile/ExportTab.tsx",
+    "src/pages/profile/NotificationsTab.tsx",
+    "src/pages/Account.tsx"
+  ],
+  "notes": "Copy updated files over the existing frontend, then delete the listed obsolete files."
+}
